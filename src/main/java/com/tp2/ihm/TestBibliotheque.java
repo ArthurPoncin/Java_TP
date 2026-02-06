@@ -1,6 +1,6 @@
 package com.tp2.ihm;
 
-import java.util.List;
+import java.util.Set;
 
 import com.tp2.bo.Client;
 import com.tp2.bo.Emprunt;
@@ -33,7 +33,7 @@ public class TestBibliotheque {
 
         if (client != null) {
             System.out.println("Client: " + client.getNom() + ", " + client.getPrenom());
-            List<Emprunt> emprunts = client.getEmprunts();
+            Set<Emprunt> emprunts = client.getEmprunts();
 
             if (emprunts.isEmpty()) {
                 System.out.println("Le client " + client.getNom() + ", " + client.getPrenom() + " n'a rien emprunté");

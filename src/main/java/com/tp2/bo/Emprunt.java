@@ -2,7 +2,7 @@ package com.tp2.bo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,12 +38,12 @@ public class Emprunt implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "compo", joinColumns = @JoinColumn(name = "id_emp", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_liv", referencedColumnName = "id"))
-    private List<Livre> livres;
+    private Set<Livre> livres;
 
     public Emprunt() {
     }
 
-    public Emprunt(Integer delai, LocalDate dateDebut, LocalDate dateFin, Client client, List<Livre> livres) {
+    public Emprunt(Integer delai, LocalDate dateDebut, LocalDate dateFin, Client client, Set<Livre> livres) {
         this.delai = delai;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -91,11 +91,11 @@ public class Emprunt implements Serializable {
         this.client = client;
     }
 
-    public List<Livre> getLivres() {
+    public Set<Livre> getLivres() {
         return livres;
     }
 
-    public void setLivres(List<Livre> livres) {
+    public void setLivres(Set<Livre> livres) {
         this.livres = livres;
     }
 

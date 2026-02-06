@@ -1,7 +1,7 @@
 package com.tp2.bo;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,12 +27,12 @@ public class Client implements Serializable {
     private String prenom;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
-    private List<Emprunt> emprunts;
+    private Set<Emprunt> emprunts;
 
     public Client() {
     }
 
-    public Client(String nom, String prenom, List<Emprunt> emprunts) {
+    public Client(String nom, String prenom, Set<Emprunt> emprunts) {
         this.nom = nom;
         this.prenom = prenom;
         this.emprunts = emprunts;
@@ -62,11 +62,11 @@ public class Client implements Serializable {
         this.prenom = prenom;
     }
 
-    public List<Emprunt> getEmprunts() {
+    public Set<Emprunt> getEmprunts() {
         return emprunts;
     }
 
-    public void setEmprunts(List<Emprunt> emprunts) {
+    public void setEmprunts(Set<Emprunt> emprunts) {
         this.emprunts = emprunts;
     }
 
