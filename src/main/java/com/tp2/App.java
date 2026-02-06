@@ -39,7 +39,7 @@ public class App {
 
         TypedQuery<Livre> qTitre = em.createQuery("SELECT l FROM Livre l WHERE l.titre = :t", Livre.class);
         qTitre.setParameter("t", "Germinal");
-        List<Livre> resultTitre = qTitre.getResultList(); 
+        List<Livre> resultTitre = qTitre.getResultList();
         if (!resultTitre.isEmpty()) {
             System.out.println("Trouvé : " + resultTitre.get(0));
         }
