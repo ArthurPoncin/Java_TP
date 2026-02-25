@@ -11,7 +11,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -34,7 +34,7 @@ public class Client implements Serializable {
     @Embedded
     private Adresse adresse;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "clients", fetch = FetchType.LAZY)
     private List<Compte> comptes;
 
     public Client() {

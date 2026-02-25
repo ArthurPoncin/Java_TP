@@ -2,6 +2,8 @@ package com.tp4.bo;
 
 import java.time.LocalDate;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -19,8 +21,8 @@ public class AssuranceVie extends Compte {
     public AssuranceVie() {
     }
 
-    public AssuranceVie(String numero, double solde, Client client, Banque banque, LocalDate dateFin, double taux) {
-        super(numero, solde, client, banque);
+    public AssuranceVie(String numero, double solde, List<Client> clients, Banque banque, LocalDate dateFin, double taux) {
+        super(numero, solde, clients, banque);
         this.dateFin = dateFin;
         this.taux = taux;
     }

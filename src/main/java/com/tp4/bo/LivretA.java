@@ -1,5 +1,7 @@
 package com.tp4.bo;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -14,8 +16,8 @@ public class LivretA extends Compte {
     public LivretA() {
     }
 
-    public LivretA(String numero, double solde, Client client, Banque banque, double taux) {
-        super(numero, solde, client, banque);
+    public LivretA(String numero, double solde, List<Client> clients, Banque banque, double taux) {
+        super(numero, solde, clients, banque);
         this.taux = taux;
     }
 

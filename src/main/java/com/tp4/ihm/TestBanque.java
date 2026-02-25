@@ -2,6 +2,7 @@ package com.tp4.ihm;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.tp4.bo.Adresse;
 import com.tp4.bo.AssuranceVie;
@@ -23,7 +24,6 @@ public class TestBanque {
         Banque bnp = new Banque("BNP Paribas");
         em.persist(bnp);
 
-        // Clients
         Adresse adresse1 = new Adresse(12, "Rue de la Paix", 75001, "Paris");
         Client client1 = new Client("Dupont", "Alice", LocalDate.of(1990, 5, 14), adresse1);
         em.persist(client1);
@@ -32,14 +32,13 @@ public class TestBanque {
         Client client2 = new Client("Martin", "Bob", LocalDate.of(1985, 3, 22), adresse2);
         em.persist(client2);
 
-        // Comptes
-        Compte compte1 = new Compte("FR76-0001", 1500.00, client1, bnp);
+        Compte compte1 = new Compte("FR76-0001", 1500.00, List.of(client1, client2), bnp);
         em.persist(compte1);
 
-        LivretA livret = new LivretA("FR76-0002", 3000.00, client1, bnp, 3.0);
+        LivretA livret = new LivretA("FR76-0002", 3000.00, List.of(client1), bnp, 3.0);
         em.persist(livret);
 
-        AssuranceVie assurance = new AssuranceVie("FR76-0003", 10000.00, client2, bnp,
+        AssuranceVie assurance = new AssuranceVie("FR76-0003", 10000.00, List.of(client1), bnp,
                 LocalDate.of(2035, 1, 1), 2.5);
         em.persist(assurance);
 

@@ -12,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -31,9 +33,11 @@ public class Compte implements Serializable {
     @Column(name = "solde", nullable = false)
     private double solde;
 
-    @ManyToOne
-    @JoinColumn(name = "id_client", nullable = false)
-    private Client client;
+    @ManyToMany
+    @JoinTable(name = "compte_client",
+            joinColumns = @JoinColumn(name = "id_compte"),
+            inverseJoinColumns = @JoinColumn(name = "id_client"))
+    private List<Client> clients;
 
     @ManyToOne
     @JoinColumn(name = "id_banque", nullable = false)
@@ -45,10 +49,10 @@ public class Compte implements Serializable {
     public Compte() {
     }
 
-    public Compte(String numero, double solde, Client client, Banque banque) {
+    public Compte(String numero, double solde, List<Client> clients, Banque banque) {
         this.numero = numero;
         this.solde = solde;
-        this.client = client;
+        this.clients = clients;
         this.banque = banque;
     }
 
@@ -76,12 +80,12 @@ public class Compte implements Serializable {
         this.solde = solde;
     }
 
-    public Client getClient() {
-        return client;
+    public List<Client> getClients() {
+        return clients;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
     public Banque getBanque() {
